@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Card from '../Components/Card'
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import { useCharStates } from "../Components/utils/global.context";
 
 const Home = () => {
+  const { state } = useCharStates();
+
   return (
-    <main className="" >
-      <h1>Home</h1>
       <div className='card-grid'>
-        {/* Aqui deberias renderizar las cards */}
+      {state.data.map((char) => (
+        <Card key={char.id} char={char} />
+      ))}
       </div>
-    </main>
-  )
+  );
 }
 
 export default Home
